@@ -5,5 +5,5 @@ public class Anagram {
 		// TODO Auto-generated method stub
 
 	}
-
+hahahahha du moin
 }
