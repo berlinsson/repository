@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import java.awt.SystemColor;
+import javax.swing.ButtonGroup;
+import javax.swing.UIManager;
 
 public class GUI_Start extends JFrame {
 
@@ -23,11 +25,12 @@ public class GUI_Start extends JFrame {
 	private JLabel lblRegeln;
 	private JLabel lblSpieleranzahl;
 	private JButton btnPlayer_1;
-	private JTextField textName_1;
+	private JTextField txtSpielername1;
 	private JButton btnPlayer_2;
-	private JTextField textName_2;
+	private JTextField txtSpielername2;
 	private JButton btnPlayer_3;
-	private JTextField textName_3;
+	private JTextField txtSpielername3;
+	private final ButtonGroup btngSpielerzahl = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -52,13 +55,13 @@ public class GUI_Start extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 800);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 255, 255));
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		lblMcgQuizchampion = new JLabel("MCG Quizchampion");
-		lblMcgQuizchampion.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblMcgQuizchampion.setFont(new Font("Arial", Font.PLAIN, 20));
 		lblMcgQuizchampion.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMcgQuizchampion.setBounds(405, 54, 194, 40);
 		contentPane.add(lblMcgQuizchampion);
@@ -79,6 +82,9 @@ public class GUI_Start extends JFrame {
 		btnstart.setForeground(Color.BLACK);
 		btnstart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Hauptklasse.setSpielername1(txtSpielername1.getText());
+				Hauptklasse.setSpielername2(txtSpielername2.getText());
+				Hauptklasse.setSpielername3(txtSpielername3.getText());
 			}
 		});
 		btnstart.setBounds(39, 671, 96, 60);
@@ -98,30 +104,53 @@ public class GUI_Start extends JFrame {
 		contentPane.add(lblSpieleranzahl);
 		
 		btnPlayer_1 = new JButton("Player 1");
+		btngSpielerzahl.add(btnPlayer_1);
+		btnPlayer_1.setBackground(Color.LIGHT_GRAY);
+		btnPlayer_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Hauptklasse.setSpielerZahl(1);
+			}
+		});
 		btnPlayer_1.setBounds(39, 217, 96, 23);
 		contentPane.add(btnPlayer_1);
 		
-		textName_1 = new JTextField();
-		textName_1.setBounds(39, 251, 96, 20);
-		contentPane.add(textName_1);
-		textName_1.setColumns(10);
+		txtSpielername1 = new JTextField();
+		txtSpielername1.setBounds(39, 251, 96, 20);
+		contentPane.add(txtSpielername1);
+		txtSpielername1.setColumns(10);
 		
 		btnPlayer_2 = new JButton("Player 2");
+		btngSpielerzahl.add(btnPlayer_2);
+		btnPlayer_2.setBackground(Color.LIGHT_GRAY);
+		btnPlayer_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Hauptklasse.setSpielerZahl(2);
+			}
+		});
 		btnPlayer_2.setBounds(39, 282, 96, 23);
 		contentPane.add(btnPlayer_2);
 		
-		textName_2 = new JTextField();
-		textName_2.setBounds(39, 316, 96, 20);
-		contentPane.add(textName_2);
-		textName_2.setColumns(10);
+		txtSpielername2 = new JTextField();
+		txtSpielername2.setBounds(39, 316, 96, 20);
+		contentPane.add(txtSpielername2);
+		txtSpielername2.setColumns(10);
 		
 		btnPlayer_3 = new JButton("Player 3");
+		btnPlayer_3.setForeground(Color.BLACK);
+		btnPlayer_3.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btngSpielerzahl.add(btnPlayer_3);
+		btnPlayer_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Hauptklasse.setSpielerZahl(3);
+			}
+		});
+		btnPlayer_3.setBackground(Color.LIGHT_GRAY);
 		btnPlayer_3.setBounds(39, 347, 96, 23);
 		contentPane.add(btnPlayer_3);
 		
-		textName_3 = new JTextField();
-		textName_3.setBounds(39, 381, 96, 20);
-		contentPane.add(textName_3);
-		textName_3.setColumns(10);
+		txtSpielername3 = new JTextField();
+		txtSpielername3.setBounds(39, 381, 96, 20);
+		contentPane.add(txtSpielername3);
+		txtSpielername3.setColumns(10);
 	}
 }
